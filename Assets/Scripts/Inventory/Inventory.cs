@@ -7,7 +7,7 @@ public class Inventory : MonoBehaviour
 {
     public event Action OnInventoryChanged;
 
-    List<ItemSlot> slots = new List<ItemSlot>();
+    public List<ItemSlot> slots = new List<ItemSlot>();
 
     public void AddItem(ItemSO item, int count)
     {
