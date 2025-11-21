@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public event Action OnInventoryChanged;
-
     public List<ItemSlot> slots = new List<ItemSlot>();
+
+    public event Action OnInventoryChanged;
 
     public void AddItem(ItemSO item, int count)
     {
@@ -26,17 +27,16 @@ public class Inventory : MonoBehaviour
         OnInventoryChanged?.Invoke();
     }
 
-    public void RemoveItem(ItemSO item)
+    public void RemoveItem(ItemSlot slot)
     {
-        ItemSlot slot = slots.FirstOrDefault(s => s.Item == item);
-        if (slot != null)
-        {
-            if (slot.Count > 1)
-                slot.Count -= 1;
-            else if (slot.Count == 1)
-            {
-                slots.Remove(slot);
-            }
-        }
+        if (slot == null) return;
+
+        slot.Count--;
+        Debug.Log($"Items left: {slot.Count}");
+
+        if (slot.Count <= 0) 
+            slots.Remove(slot);
+
+        OnInventoryChanged?.Invoke();
     }
 }

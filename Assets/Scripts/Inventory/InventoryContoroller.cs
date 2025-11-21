@@ -6,14 +6,30 @@ public class InventoryContoroller : MonoBehaviour
     [SerializeField] List<SlotUI> uiSlots;
     [SerializeField] Inventory inv;
 
-    void OnEnable()
+    private SlotUI selectedSlotUI;
+    private ItemSlot selectedSlot;
+
+    void Awake()
     {
-        inv.OnInventoryChanged += RefreshUI;
+        foreach(var s in uiSlots)
+            s.OnSlotSelected += OnSlotClicked;
     }
-    void OnDisable()
+
+    void OnSlotClicked(SlotUI slotUI)
     {
-        inv.OnInventoryChanged -= RefreshUI;
+        selectedSlotUI = slotUI;
+        selectedSlot = slotUI.currSlot;
     }
+
+    public void DeleteSelected()
+    {
+        if (selectedSlot == null) return;
+
+        inv.RemoveItem(selectedSlot);
+    }
+
+    void OnEnable() => inv.OnInventoryChanged += RefreshUI;
+    void OnDisable() => inv.OnInventoryChanged -= RefreshUI;
 
     void RefreshUI()
     {
@@ -25,6 +41,12 @@ public class InventoryContoroller : MonoBehaviour
                 uiSlots[i].SetData(slots[i]);
             else 
                 uiSlots[i].Clear();
+        }
+
+        if (selectedSlot != null && !slots.Contains(selectedSlot))
+        {
+            selectedSlot = null;
+            selectedSlotUI = null;
         }
     }
 }
