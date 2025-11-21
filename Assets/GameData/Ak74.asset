@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 1
   Name: AK74
-  Type: Weapon
+  Type: Weapon_AR
   Icon: {fileID: 1025581796, guid: ea9dcf99282627b47bd08a87f19e3d81, type: 3}
   MaxStack: 1
+  Prefab: {fileID: 456881181102666397, guid: fe38ea855dddff74f903c8805664ee60, type: 3}

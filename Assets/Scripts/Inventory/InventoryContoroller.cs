@@ -28,8 +28,7 @@ public class InventoryContoroller : MonoBehaviour
         inv.RemoveItem(selectedSlot);
     }
 
-    void OnEnable() => inv.OnInventoryChanged += RefreshUI;
-    void OnDisable() => inv.OnInventoryChanged -= RefreshUI;
+    public void OnOpenRefresh() => RefreshUI();
 
     void RefreshUI()
     {

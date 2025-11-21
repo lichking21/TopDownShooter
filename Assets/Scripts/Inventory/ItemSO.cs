@@ -8,4 +8,6 @@ public class ItemSO : ScriptableObject
     public string Type;
     public Sprite Icon;
     public int MaxStack;
+    
+    public GameObject Prefab;
 }

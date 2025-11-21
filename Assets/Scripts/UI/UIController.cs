@@ -4,15 +4,15 @@ using UnityEngine.UI;
 
 class UIController : MonoBehaviour
 {
-    private GameObject inventoryPanel;
+    private InventoryContoroller inventoryPanel;
 
     private bool isInventoryOpened;
 
     void Awake()
     {
-        inventoryPanel = GameObject.Find("InventoryPanel");
+        inventoryPanel = GameObject.Find("InventoryPanel").GetComponent<InventoryContoroller>();
 
-        inventoryPanel.SetActive(false);
+        inventoryPanel.gameObject.SetActive(false);
 
         isInventoryOpened = false;
     }
@@ -20,7 +20,8 @@ class UIController : MonoBehaviour
     public void OpenBackPack()
     {
         isInventoryOpened = !isInventoryOpened;
-        inventoryPanel.SetActive(isInventoryOpened);
+        inventoryPanel.gameObject.SetActive(isInventoryOpened);
+        inventoryPanel.OnOpenRefresh();
     }
 
     public void Shoot()
