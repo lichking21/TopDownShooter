@@ -12,6 +12,8 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(ItemSO item, int count)
     {
+        Debug.Log("ADDING ITEM: " + item + " INTO inventory: " + this);
+        
         ItemSlot slot = slots.FirstOrDefault(s => s.Item == item);
         if (slot != null && item.MaxStack > 1)
         {
@@ -38,5 +40,10 @@ public class Inventory : MonoBehaviour
             slots.Remove(slot);
 
         OnInventoryChanged?.Invoke();
+    }
+
+    public ItemSlot GetSlot(ItemSO item)
+    {
+        return slots.FirstOrDefault(s => s.Item == item);
     }
 }

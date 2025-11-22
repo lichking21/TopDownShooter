@@ -3,10 +3,14 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float speed;
     [SerializeField] private Animator anim;
+    [SerializeField] private Inventory inv;
+
+    private bool isShooting;
+    public Weapon currWeapon;
     public GameObject holdPoint_AR;
 
+    [SerializeField] private float speed;
     private Rigidbody2D rb;
     private PlayerInputSystem input;
     private Vector2 moveInput;
@@ -36,9 +40,27 @@ public class PlayerController : MonoBehaviour
         moveInput = context.ReadValue<Vector2>();
     }
 
+    public void StartShoot()
+    {
+        isShooting = true;
+    }
+        
+    public void StopShoot()
+    {
+        isShooting = false;
+    }
+
     void Update()
     {
+        // Movement
         rb.velocity = moveInput * speed;
         anim.SetFloat("Speed", moveInput.magnitude);
+
+        //Shooting
+        if (isShooting)
+        {
+            currWeapon.Shoot();
+        }
+        anim.SetBool("Shoot", isShooting);
     }
 }

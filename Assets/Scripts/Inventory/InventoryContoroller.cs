@@ -6,7 +6,6 @@ public class InventoryContoroller : MonoBehaviour
     [SerializeField] List<SlotUI> uiSlots;
     [SerializeField] Inventory inv;
 
-    private SlotUI selectedSlotUI;
     private ItemSlot selectedSlot;
 
     void Awake()
@@ -17,7 +16,6 @@ public class InventoryContoroller : MonoBehaviour
 
     void OnSlotClicked(SlotUI slotUI)
     {
-        selectedSlotUI = slotUI;
         selectedSlot = slotUI.currSlot;
     }
 
@@ -45,7 +43,6 @@ public class InventoryContoroller : MonoBehaviour
         if (selectedSlot != null && !slots.Contains(selectedSlot))
         {
             selectedSlot = null;
-            selectedSlotUI = null;
         }
     }
 }

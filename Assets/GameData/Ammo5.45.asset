@@ -17,3 +17,4 @@ MonoBehaviour:
   Type: Ammo
   Icon: {fileID: -181010430, guid: 136264f80edd5424fb1bc376ad6a7a76, type: 3}
   MaxStack: 64
+  Prefab: {fileID: 1280745106274295876, guid: b5f45b44abaa2b642a9c4dd3ccb47ab8, type: 3}

@@ -4,8 +4,9 @@ using UnityEngine.UI;
 
 class UIController : MonoBehaviour
 {
-    private InventoryContoroller inventoryPanel;
+    [SerializeField] private PlayerController player;
 
+    private InventoryContoroller inventoryPanel;
     private bool isInventoryOpened;
 
     void Awake()
@@ -24,8 +25,6 @@ class UIController : MonoBehaviour
         inventoryPanel.OnOpenRefresh();
     }
 
-    public void Shoot()
-    {
-        Debug.Log("Shoot");
-    }
+    public void OnShootDown() => player.StartShoot();
+    public void OnShootUp() => player.StopShoot();
 }

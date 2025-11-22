@@ -17,11 +17,19 @@ public class PickUpObj : MonoBehaviour
     {
         inventory.AddItem(item, count);
 
-        if (item.Type == "Weapon_AR")
+        switch(item.Type)
         {
-            GameObject weaponAR = Instantiate(item.Prefab);
-            weaponAR.transform.SetParent(player.holdPoint_AR.transform);
-            weaponAR.transform.localPosition = weaponPos;
+            case "Weapon_AR":
+                GameObject weaponAR = Instantiate(item.Prefab);
+                weaponAR.transform.SetParent(player.holdPoint_AR.transform);
+                weaponAR.transform.localPosition = weaponPos;
+                
+                var w = weaponAR.GetComponent<Weapon>();
+                w.inv = inventory;
+                player.currWeapon = w;
+                break;
+            case "Ammo":
+                break;
         }
     }
 
@@ -29,6 +37,7 @@ public class PickUpObj : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            inventory = collision.GetComponent<Inventory>();
             PickUp();   
             Destroy(gameObject);
         }
