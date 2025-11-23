@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9919ed036c32a4aab98e476884c7ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
+  inventory: {fileID: 4604598156511475525, guid: c9b41c9b40ac72842a28b7ba7d28939a, type: 3}
   item: {fileID: 11400000, guid: ffc4de091f77a5f4f89769fc01a780b8, type: 2}
   count: 100
 --- !u!212 &5940793908969240053

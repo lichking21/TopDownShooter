@@ -629,6 +629,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 100
   hpBar: {fileID: 217490122260600780}
+  damage: 1
+  speed: 1
+  detectionDist: 1
+  target: {fileID: 0}
   currHp: 0
   ID: Chmo
 --- !u!95 &217490122946483450

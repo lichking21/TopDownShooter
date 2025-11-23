@@ -25,6 +25,7 @@ public class Weapon : MonoBehaviour
         var newBullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
         Bullet b = newBullet.GetComponent<Bullet>();
         b.bulletDamage = weaponDamage;
+       
         b.SetBulletDirection(player.faceRight);
 
         ammo.Count--;
@@ -38,6 +39,8 @@ public class Weapon : MonoBehaviour
         GameObject weaponObj = Instantiate(item.Prefab);
 
         weaponObj.transform.SetParent(player.holdPoint_AR.transform);
+        weaponObj.transform.localRotation = Quaternion.identity;
+        weaponObj.transform.localScale = item.Prefab.transform.localScale;
 
         switch(item.Type)
         {
