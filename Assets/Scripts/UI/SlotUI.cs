@@ -26,6 +26,8 @@ public class SlotUI : MonoBehaviour
     {
         currSlot = item;
 
+        Debug.Log($"SlotUI.SetData -> slotItem id={(item?.Item!=null?item.Item.ID:-1)} name={(item?.Item!=null?item.Item.name:"null")} icon={(item?.Item?.Icon!=null?item.Item.Icon.name:"null")}");
+
         icon.sprite = item.Item.Icon;
         icon.enabled = true;
         count.text = item.Count > 1 ? item.Count.ToString() : ""; 

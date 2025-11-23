@@ -6,6 +6,7 @@ class UIController : MonoBehaviour
 {
     [SerializeField] private PlayerController player;
 
+    [SerializeField] private GameObject shootBtn;
     private InventoryContoroller inventoryPanel;
     private bool isInventoryOpened;
 
@@ -22,6 +23,7 @@ class UIController : MonoBehaviour
     {
         isInventoryOpened = !isInventoryOpened;
         inventoryPanel.gameObject.SetActive(isInventoryOpened);
+        shootBtn.SetActive(!isInventoryOpened);
         inventoryPanel.OnOpenRefresh();
     }
 

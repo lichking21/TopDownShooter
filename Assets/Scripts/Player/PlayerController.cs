@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public GameObject holdPoint_AR;
 
     [SerializeField] private float speed;
+    public bool faceRight = true;
     private Rigidbody2D rb;
     private PlayerInputSystem input;
     private Vector2 moveInput;
@@ -19,6 +20,8 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         input = new PlayerInputSystem();
+
+        inv.OnItemRemoved += OnItemRemove;
     }
 
     void OnEnable()
@@ -38,6 +41,25 @@ public class PlayerController : MonoBehaviour
     void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+
+        if ((moveInput.x > 0 && !faceRight) || (moveInput.x < 0 && faceRight))
+        {
+            transform.localScale *= new Vector2(-1, 1);
+            faceRight = !faceRight;
+        }
+    }
+
+    public void OnItemRemove(ItemSO item)
+    {
+        if (currWeapon == null) return;
+
+        if (currWeapon.itemSO == item)
+        {
+            Destroy(currWeapon.gameObject);
+            currWeapon = null;
+
+            Debug.Log("Weapon was removed");
+        }
     }
 
     public void StartShoot()
@@ -59,7 +81,7 @@ public class PlayerController : MonoBehaviour
         //Shooting
         if (isShooting)
         {
-            currWeapon.Shoot();
+            currWeapon.Shoot(this);
         }
         anim.SetBool("Shoot", isShooting);
     }

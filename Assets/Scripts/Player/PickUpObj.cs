@@ -6,7 +6,6 @@ public class PickUpObj : MonoBehaviour
     [SerializeField] private ItemSO item;
     [SerializeField] private int count;
     private PlayerController player;
-    private Vector3 weaponPos = new Vector3(0.05f, -0.02f, 0); 
 
     void Awake()
     {
@@ -20,13 +19,8 @@ public class PickUpObj : MonoBehaviour
         switch(item.Type)
         {
             case "Weapon_AR":
-                GameObject weaponAR = Instantiate(item.Prefab);
-                weaponAR.transform.SetParent(player.holdPoint_AR.transform);
-                weaponAR.transform.localPosition = weaponPos;
-                
-                var w = weaponAR.GetComponent<Weapon>();
-                w.inv = inventory;
-                player.currWeapon = w;
+                var weapon = item.Prefab.GetComponent<Weapon>();
+                player.currWeapon = weapon.Equip(item, player, inventory);
                 break;
             case "Ammo":
                 break;

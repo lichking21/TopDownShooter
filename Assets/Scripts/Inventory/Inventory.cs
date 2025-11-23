@@ -9,10 +9,11 @@ public class Inventory : MonoBehaviour
     public List<ItemSlot> slots = new List<ItemSlot>();
 
     public event Action OnInventoryChanged;
+    public event Action<ItemSO> OnItemRemoved;
 
     public void AddItem(ItemSO item, int count)
     {
-        Debug.Log("ADDING ITEM: " + item + " INTO inventory: " + this);
+        Debug.Log($"ADDING ITEM: id={item?.ID} name={item?.name} icon={(item?.Icon!=null?item.Icon.name:"null")} count={count} into inventory: {this}");
         
         ItemSlot slot = slots.FirstOrDefault(s => s.Item == item);
         if (slot != null && item.MaxStack > 1)
@@ -36,8 +37,11 @@ public class Inventory : MonoBehaviour
         slot.Count--;
         Debug.Log($"Items left: {slot.Count}");
 
-        if (slot.Count <= 0) 
+        if (slot.Count <= 0)
+        {
             slots.Remove(slot);
+            OnItemRemoved?.Invoke(slot.Item);
+        }
 
         OnInventoryChanged?.Invoke();
     }

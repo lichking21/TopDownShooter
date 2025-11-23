@@ -12,6 +12,11 @@ public class InventoryContoroller : MonoBehaviour
     {
         foreach(var s in uiSlots)
             s.OnSlotSelected += OnSlotClicked;
+
+        if (inv != null)
+        {
+            inv.OnInventoryChanged += RefreshUI;
+        }
     }
 
     void OnSlotClicked(SlotUI slotUI)
@@ -24,6 +29,7 @@ public class InventoryContoroller : MonoBehaviour
         if (selectedSlot == null) return;
 
         inv.RemoveItem(selectedSlot);
+        RefreshUI();
     }
 
     public void OnOpenRefresh() => RefreshUI();

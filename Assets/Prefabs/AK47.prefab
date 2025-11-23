@@ -158,8 +158,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1211905531
-  m_SortingLayer: 2
+  m_SortingLayerID: 315228691
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 1025581796, guid: ea9dcf99282627b47bd08a87f19e3d81, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9919ed036c32a4aab98e476884c7ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 681122927622303927, guid: cb3a4b479e8695a4783a2f14906ad811, type: 3}
+  inventory: {fileID: 0}
   item: {fileID: 11400000, guid: 8746088e6f70e3e49b9d051141b70d51, type: 2}
   count: 1
 --- !u!61 &456881181102666396
@@ -229,4 +229,4 @@ MonoBehaviour:
   shootPoint: {fileID: 43946247}
   bulletPrefab: {fileID: 947725388776841119, guid: d17d9169f89c10e479abeec6ef847ee7, type: 3}
   ammoType: {fileID: 11400000, guid: ffc4de091f77a5f4f89769fc01a780b8, type: 2}
-  inv: {fileID: 681122927622303927, guid: cb3a4b479e8695a4783a2f14906ad811, type: 3}
+  inv: {fileID: 0}
